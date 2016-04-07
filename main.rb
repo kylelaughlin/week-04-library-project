@@ -27,7 +27,7 @@ get '/libraries/index' do
 end
 
 #library show
-get 'library/:id' do
+get '/library/:id' do
   @library = Library.find_by_id(params['id'])
   erb :library_show
 end
