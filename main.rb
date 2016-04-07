@@ -56,7 +56,13 @@ end
 ####### Staff Member ###################
 ########################################
 
-#libraries menu
+# staff member menu
 get '/staff_members' do
   erb :staff_members_menu
+end
+
+#staff member index
+get '/staff_members/index' do
+  @staff_members = StaffMembers.all
+  erb :staff_member_index
 end
