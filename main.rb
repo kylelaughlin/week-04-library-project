@@ -16,6 +16,13 @@ get '/' do
   erb :root
 end
 
+#library menu
 get '/libraries' do
   erb :libraries_menu
+end
+
+#library index
+get '/libraries/index' do
+  @libraries = Library.all
+  erb :libraries_index
 end
