@@ -1,0 +1,14 @@
+<% if @library.errors.any? %>
+  <% @library.errors.full_messages.each do |m| %>
+    <p> Error: <%=m%></p>
+  <%end%>
+<%end%>
+
+<h1>Edit <%=@library.branch_name%></h1>
+<form action="/library/<%=@library.id%>/update" method="post">
+  Branch Name: <input type="text" name="branch_name" value="<%=@library.branch_name%>"></br>
+  Address: <input type="text" name="address" value="<%=@library.address%>"></br>
+  Phone Number: <input type="text" name="phone_number" value="<%=@library.phone_number%>"></br>
+  <input type="submit" value="Update Library">
+</form>
+<p><a href="/library/<%=@library.id%>">Back to <%=@library.branch_name%></a></p>
