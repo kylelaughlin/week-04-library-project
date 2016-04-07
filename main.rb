@@ -15,13 +15,19 @@ get '/' do
   erb :root
 end
 
-#library menu
+#libraries menu
 get '/libraries' do
   erb :libraries_menu
 end
 
-#library index
+#libraries index
 get '/libraries/index' do
   @libraries = Library.all
   erb :libraries_index
+end
+
+#library show
+get 'library/show/:id' do
+  @library = Library.find_by_id(params['id'])
+  erb :library_show
 end
