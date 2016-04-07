@@ -8,7 +8,7 @@ require_relative "lib/library.rb"
 require_relative "lib/patron.rb"
 require_relative "lib/staff_member.rb"
 
-binding.pry
+
 #Root
 
 get '/' do
@@ -27,6 +27,21 @@ end
 get '/libraries/index' do
   @libraries = Library.all
   erb :libraries_index
+end
+
+get '/library/new' do
+  @library = Library.new
+  erb :library_new
+end
+
+post '/libraries' do
+  binding.pry
+  @library = Library.new(params)
+  if @library.save
+    redirect to("/libraries")
+  else
+    erb :library_new
+  end
 end
 
 #library show
