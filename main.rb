@@ -15,3 +15,7 @@ binding.pry
 get '/' do
   erb :root
 end
+
+get '/libraries' do
+  erb :libraries_menu
+end
