@@ -87,3 +87,9 @@ get '/staff_member/:id' do
   @staff_member = StaffMember.find_by_id(params['id'])
   erb :staff_member_show
 end
+
+# staff member edit
+get 'staff_member/:id/edit' do
+  @staff_member = StaffMember.find_by_id(params['id'])
+  erb :staff_member_edit
+end
