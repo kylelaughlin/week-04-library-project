@@ -8,7 +8,6 @@ require_relative "lib/library.rb"
 require_relative "lib/patron.rb"
 require_relative "lib/staff_member.rb"
 
-binding.pry
 
 #Root
 

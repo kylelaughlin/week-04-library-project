@@ -1,6 +1,7 @@
 <h1>Libraries Index</h1>
 <ul>
   <% @libraries.each do |l| %>
-    <li><%=l.branch_name%></li>
+    <li><%=l.branch_name%></br><%=l.address%></br><%=l.phone_number%></li>
   <% end %>
 </ul>
+<p><a href="/libraries">Back to Libraries Menu</a></p>
