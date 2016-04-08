@@ -8,7 +8,6 @@ require_relative "lib/library.rb"
 require_relative "lib/patron.rb"
 require_relative "lib/staff_member.rb"
 
-binding.pry
 #Root
 
 get '/' do
@@ -133,4 +132,11 @@ end
 get '/books/index' do
   @books = Book.all
   erb :books_index
+end
+
+get '/book/:id' do
+  @book = Book.find_by_id(params['id'])
+  @library = Library.find_by_id(@book.library_id)
+  binding.pry
+  erb :book_show
 end
