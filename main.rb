@@ -197,3 +197,12 @@ get '/book/:id/checkin' do
     erb :book_show
   end
 end
+
+########################################
+####### Patron #########################
+########################################
+
+# patrons menu
+get '/patrons' do
+  erb :patrons_menu
+end
