@@ -66,6 +66,12 @@ post '/library/:id/update' do
   end
 end
 
+get '/library/:id/staff_members' do
+  @library = Library.find_by_id(params['id'])
+  @staff_members = StaffMember.where(library_id: params['id'])
+  erb :library_staff_members
+end
+
 ########################################
 ####### Staff Member ###################
 ########################################
