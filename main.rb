@@ -8,7 +8,6 @@ require_relative "lib/library.rb"
 require_relative "lib/patron.rb"
 require_relative "lib/staff_member.rb"
 
-binding.pry
 
 #Root
 
@@ -172,5 +171,20 @@ post '/book/:id' do
   else
     erb :book_edit
   end
+end
 
+get '/book/:id/checkout' do
+  @book = Book.find_by_id(params['id'])
+  @patrons = Patron.all
+  erb :book_checkout
+end
+
+post '/book/:id/checkout' do
+  @book = Book.find_by_id(params['id'])
+  @patron = Patron.find_by_id(params['patron_id'])
+  if @book.update_attributes(patron: @patron)
+    redirect to("/book/#{@book.id}")
+  else
+    erb :book_checkout
+  end
 end

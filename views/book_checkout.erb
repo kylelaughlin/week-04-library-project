@@ -1,0 +1,18 @@
+<% if @book.errors.any? %>
+  <% @book.errors.full_messages.each do |m| %>
+    <p> Error: <%=m%></p>
+  <%end%>
+<%end%>
+
+<h1>Check Out <%=@book.title%></h1>
+
+<form action="/book/<%=@book.id%>/checkout" method="post">
+  Patron: <select name="patron_id">
+            <% @patrons.each do |patron| %>
+              <option value="<%=patron.id%>"><%=patron.name%></option>
+            <% end %>
+          </select>
+  <input type="submit" value="Check Out">
+</form>
+
+<p><a href="/book/<%=@book.id%>">Back to <%=@book.title%></a></p>
