@@ -96,7 +96,6 @@ get '/staff_member/:id/edit' do
 end
 
 post '/staff_member/:id' do
-  binding.pry
   @staff_member = StaffMember.find_by_id(params['id'])
   @library = Library.find_by_id(params['library_id'])
   if @staff_member.update_attributes(name: params['name'],email: params['email'], library: @library)
