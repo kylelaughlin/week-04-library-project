@@ -81,6 +81,12 @@ get '/staff_members/index' do
   erb :staff_member_index
 end
 
+#staff member new
+get '/staff_member/new' do
+  @staff_member = StaffMember.new
+  erb :staff_member_new
+end
+
 # staff member show
 get '/staff_member/:id' do
   @staff_member = StaffMember.find_by_id(params['id'])
