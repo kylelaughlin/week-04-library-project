@@ -1,0 +1,19 @@
+<% if @staff_member.errors.any? %>
+  <% @staff_member.errors.full_messages.each do |m| %>
+    <p> Error: <%=m%></p>
+  <%end%>
+<%end%>
+
+<h1>Edit <%=@staff_member.name%></h1>
+<form action="/staff_member/<%=@staff_member.id%>" method="post">
+  Name: <input type="text" name="name" value="<%=@staff_member.name%>"></br>
+  Email: <input type="text" name="email" value="<%=@staff_member.email%>"></br>
+  Library: <select name="library_id">
+            <%@libraries.each do |l|%>
+              <option value="<%=l.id%>" <%= @staff_member.library_id == l.id ? 'selected' : '' %>>
+                <%=l.branch_name%></option>
+            <%end%>
+          </select></br>
+  <input type="submit" value="Update Staff Member">
+</form>
+<p><a href="/staff_member/<%=@staff_member.id%>">Back to <%=@staff_member.name%></a></p>
