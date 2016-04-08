@@ -188,3 +188,12 @@ post '/book/:id/checkout' do
     erb :book_checkout
   end
 end
+
+get '/book/:id/checkin' do
+  @book = Book.find_by_id(params['id'])
+  if @book.update_attributes(patron_id: nil)
+    redirect to("/book/#{@book.id}")
+  else
+    erb :book_show
+  end
+end

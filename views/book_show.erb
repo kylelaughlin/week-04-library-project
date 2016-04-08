@@ -1,4 +1,10 @@
-a<h1><%=@book.title%></h1>
+<% if @book.errors.any? %>
+  <% @book.errors.full_messages.each do |m| %>
+    <p> Error: <%=m%></p>
+  <%end%>
+<%end%>
+
+<h1><%=@book.title%></h1>
 
 <p>Author: <%=@book.author%></p>
 <p>ISBN: <%=@book.isbn%></p>
