@@ -1,7 +1,7 @@
-<h1>Staff Members Index</h1>
+a<h1>Staff Members Index</h1>
 <ul>
   <% @staff_members.each do |sm| %>
-    <li><a href="/staff_member/<%=sm.id%>"><%=sm.name%></a>
+    <li><a href="/staff_member/<%=sm.id%>"><%=sm.name%></a></li>
   <% end %>
 </ul>
 <p><a href="/staff_members">Back to Staff Members Menu</a></p>

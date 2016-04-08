@@ -8,7 +8,7 @@ require_relative "lib/library.rb"
 require_relative "lib/patron.rb"
 require_relative "lib/staff_member.rb"
 
-
+binding.pry
 #Root
 
 get '/' do
@@ -128,4 +128,9 @@ end
 # books menu
 get '/books' do
   erb :books_menu
+end
+
+get '/books/index' do
+  @books = Book.all
+  erb :books_index
 end
