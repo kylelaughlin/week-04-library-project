@@ -134,6 +134,21 @@ get '/books/index' do
   erb :books_index
 end
 
+get '/book/new' do
+  @book = Book.new
+  @libraries = Library.all
+  erb :book_new
+end
+
+post '/books' do
+  @book = Book.new(params)
+  if @book.save
+    redirect to("/books")
+  else
+    erb :book_new
+  end
+end
+
 get '/book/:id' do
   @book = Book.find_by_id(params['id'])
   @library = Library.find_by_id(@book.library_id)
@@ -155,4 +170,5 @@ post '/book/:id' do
   else
     erb :book_edit
   end
+
 end

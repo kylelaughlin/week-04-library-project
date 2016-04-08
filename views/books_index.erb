@@ -1,4 +1,5 @@
 <h1>Books Index</h1>
+
 <ul>
   <% @books.each do |b| %>
     <li>TItle: <a href="/book/<%=b.id%>"><%=b.title%></a></br>
@@ -6,4 +7,5 @@
       ISBN: <%=b.isbn%></li>
   <% end %>
 </ul>
+
 <p><a href="/books">Back to Books Menu</a></p>
