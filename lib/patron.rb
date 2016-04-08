@@ -11,8 +11,12 @@ class Patron < ActiveRecord::Base
    def books_display
      books = Book.where(patron_id: id)
      string = ""
-     books.each do |b|
-       string += "#{b.title}\n       "
+     if books.empty?
+       string = "None"
+     else
+       books.each do |b|
+         string += "#{b.title}\n       "
+       end
      end
      string
    end

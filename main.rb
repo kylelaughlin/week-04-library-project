@@ -217,6 +217,15 @@ get '/patron/new' do
   erb :patron_new
 end
 
+post '/patrons' do
+  @patron = Patron.new(params)
+  if @patron.save
+    redirect to("/patrons")
+  else
+    erb :patron_new
+  end
+end
+
 get '/patron/:id' do
   @patron = Patron.find_by_id(params['id'])
   erb :patron_show
