@@ -84,7 +84,17 @@ end
 #staff member new
 get '/staff_member/new' do
   @staff_member = StaffMember.new
+  @libraries = Library.all
   erb :staff_member_new
+end
+
+post '/staff_members' do
+  @staff_member = StaffMember.new(params)
+  if @staff_member.save
+    redirect to("/staff_members")
+  else
+    erb :staff_member_new
+  end
 end
 
 # staff member show
