@@ -1,0 +1,10 @@
+<h1>Patrons Index</h1>
+
+<ul>
+  <% @patrons.each do |patron| %>
+    <li>Name: <a href="/patron/<%=patron.id%>"><%=patron.name%></a></br>
+      Email: <%=patron.email%></li>
+  <% end %>
+</ul>
+
+<p><a href="/patrons">Back to Patrons Menu</a></p>

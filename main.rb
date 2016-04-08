@@ -206,3 +206,8 @@ end
 get '/patrons' do
   erb :patrons_menu
 end
+
+get '/patrons/index' do
+  @patrons = Patron.all
+  erb :patrons_index
+end
