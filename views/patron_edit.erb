@@ -1,0 +1,13 @@
+<% if @patron.errors.any? %>
+  <% @patron.errors.full_messages.each do |m| %>
+    <p> Error: <%=m%></p>
+  <%end%>
+<%end%>
+
+<h1>Edit <%=@patron.name%></h1>
+<form action="/patron/<%=@patron.id%>" method="post">
+  Name: <input type="text" name="name" value="<%=@patron.name%>"></br>
+  Email: <input type="text" name="email" value="<%=@patron.email%>"></br>
+  <input type="submit" value="Update Patron">
+</form>
+<p><a href="/patron/<%=@patron.id%>">Back to <%=@patron.name%></a></p>

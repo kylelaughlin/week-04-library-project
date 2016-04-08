@@ -216,3 +216,17 @@ get '/patron/:id' do
   @patron = Patron.find_by_id(params['id'])
   erb :patron_show
 end
+
+get '/patron/:id/edit' do
+  @patron = Patron.find_by_id(params['id'])
+  erb :patron_edit
+end
+
+post '/patron/:id' do
+  @patron = Patron.find_by_id(params['id'])
+  if @patron.update_attributes(name: params['name'], email: params['email'])
+    redirect to("/patron/#{@patron.id}")
+  else
+    erb :patron_edit
+  end
+end
