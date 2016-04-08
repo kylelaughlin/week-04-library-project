@@ -137,6 +137,22 @@ end
 get '/book/:id' do
   @book = Book.find_by_id(params['id'])
   @library = Library.find_by_id(@book.library_id)
-  binding.pry
   erb :book_show
+end
+
+get '/book/:id/edit' do
+  @book = Book.find_by_id(params['id'])
+  @libraries = Library.all
+  erb :book_edit
+end
+
+post '/book/:id' do
+  @book = Book.find_by_id(params['id'])
+  @library = Library.find_by_id(params['library_id'])
+  if @book.update_attributes(title: params['title'], author: params['author'],
+                              isbn: params['isbn'], library: @library)
+    redirect to ("/book/#{@book.id}")
+  else
+    erb :book_edit
+  end
 end

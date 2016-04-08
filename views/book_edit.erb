@@ -1,0 +1,20 @@
+<% if @book.errors.any? %>
+  <% @book.errors.full_messages.each do |m| %>
+    <p> Error: <%=m%></p>
+  <%end%>
+<%end%>
+
+<h1>Edit <%=@book.title%></h1>
+<form action="/book/<%=@book.id%>" method="post">
+  Title: <input type="text" name="title" value="<%=@book.title%>"></br>
+  Author: <input type="text" name="author" value="<%=@book.author%>"></br>
+  ISBN: <input type="text" name="isbn" value="<%=@book.isbn%>"></br>
+  Library: <select name="library_id">
+            <%@libraries.each do |l|%>
+              <option value="<%=l.id%>" <%= @book.library_id == l.id ? 'selected' : '' %>>
+                <%=l.branch_name%></option>
+            <%end%>
+          </select></br>
+  <input type="submit" value="Update Book">
+</form>
+<p><a href="/book/<%=@book.id%>">Back to <%=@book.title%></a></p>
