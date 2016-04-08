@@ -120,3 +120,12 @@ post '/staff_member/:id' do
     erb :staff_member_edit
   end
 end
+
+########################################
+####### Books ##########################
+########################################
+
+# books menu
+get '/books' do
+  erb :books_menu
+end
