@@ -1,6 +1,11 @@
 a<h1><%=@book.title%></h1>
+
 <p>Author: <%=@book.author%></p>
 <p>ISBN: <%=@book.isbn%></p>
 <p>Library: <%=@library.branch_name%></p>
+<p>Status: <%= @book.patron_id.nil? ? "Available" : "Checked out by #{@book.patron.name}"%></p>
+
+<p><a href="/book/<%=@book.id%>/<%= @book.patron_id.nil? ? 'checkout' : 'checkin'%>">
+      <%= @book.patron_id.nil? ? 'Check Out Book' : 'Check In Book' %></a></p>
 <p><a href="/book/<%=@book.id%>/edit">Edit Book</a></p>
 <p><a href="/books/index">Back to Books Index</a></p>
