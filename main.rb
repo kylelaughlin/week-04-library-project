@@ -211,3 +211,8 @@ get '/patrons/index' do
   @patrons = Patron.all
   erb :patrons_index
 end
+
+get '/patron/:id' do
+  @patron = Patron.find_by_id(params['id'])
+  erb :book_show
+end
