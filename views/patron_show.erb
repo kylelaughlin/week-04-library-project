@@ -1,0 +1,14 @@
+<% if @patron.errors.any? %>
+  <% @patron.errors.full_messages.each do |m| %>
+    <p> Error: <%=m%></p>
+  <%end%>
+<%end%>
+
+<h1><%=@patron.name%></h1>
+
+<p>Email: <%=@patron.email%></p>
+<p>Books: <%=@patron.books_display%></p>
+
+<p><a href="/patron/checkin">Return a Book</a></p>
+<p><a href="/patron/<%=@patron.id%>/edit">Edit Patron</a></p>
+<p><a href="/patrons/index">Back to Patrons Index</a></p>

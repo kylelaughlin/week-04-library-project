@@ -214,5 +214,5 @@ end
 
 get '/patron/:id' do
   @patron = Patron.find_by_id(params['id'])
-  erb :book_show
+  erb :patron_show
 end
