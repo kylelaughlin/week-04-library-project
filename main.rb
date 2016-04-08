@@ -35,7 +35,6 @@ get '/library/new' do
 end
 
 post '/libraries' do
-  binding.pry
   @library = Library.new(params)
   if @library.save
     redirect to("/libraries")
@@ -85,11 +84,24 @@ end
 # staff member show
 get '/staff_member/:id' do
   @staff_member = StaffMember.find_by_id(params['id'])
+  @library_name = @staff_member.library.branch_name
   erb :staff_member_show
 end
 
 # staff member edit
-get 'staff_member/:id/edit' do
+get '/staff_member/:id/edit' do
   @staff_member = StaffMember.find_by_id(params['id'])
+  @libraries = Library.all
   erb :staff_member_edit
+end
+
+post '/staff_member/:id' do
+  binding.pry
+  @staff_member = StaffMember.find_by_id(params['id'])
+  @library = Library.find_by_id(params['library_id'])
+  if @staff_member.update_attributes(name: params['name'],email: params['email'], library: @library)
+    redirect to ("/staff_member/#{@staff_member.id}")
+  else
+    erb :staff_member_edit
+  end
 end
