@@ -212,6 +212,11 @@ get '/patrons/index' do
   erb :patrons_index
 end
 
+get '/patron/new' do
+  @patron = Patron.new
+  erb :patron_new
+end
+
 get '/patron/:id' do
   @patron = Patron.find_by_id(params['id'])
   erb :patron_show
