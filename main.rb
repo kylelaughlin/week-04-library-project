@@ -117,6 +117,7 @@ post '/staff_member/:id' do
   if @staff_member.update_attributes(name: params['name'],email: params['email'], library: @library)
     redirect to ("/staff_member/#{@staff_member.id}")
   else
+    @libraries = Library.all
     erb :staff_member_edit
   end
 end
