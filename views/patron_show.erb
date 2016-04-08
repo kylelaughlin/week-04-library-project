@@ -9,7 +9,7 @@
 <p>Email: <%=@patron.email%></p>
 <p>Books: <%=@patron.books_display%></p>
 <%if @patron.books_display != "None"%>
-  <p><a href="/patron/checkin">Return a Book</a></p>
+  <p><a href="/patron/<%=@patron.id%>/checkin">Return a Book</a></p>
 <%end%>
 <p><a href="/patron/<%=@patron.id%>/edit">Edit Patron</a></p>
 <p><a href="/patrons/index">Back to Patrons Index</a></p>

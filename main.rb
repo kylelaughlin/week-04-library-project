@@ -244,3 +244,19 @@ post '/patron/:id' do
     erb :patron_edit
   end
 end
+
+get '/patron/:id/checkin' do
+  @patron = Patron.find_by_id(params['id'])
+  @books = Book.where(patron_id: @patron.id)
+  erb :patron_checkin
+end
+
+post '/patron/:id/checkin' do
+  @patron = Patron.find_by_id(params['id'])
+  @book = Book.find_by_id(params['book_id'])
+  if @book.update_attributes(patron_id: nil)
+    redirect to("/patron/#{@patron.id}")
+  else
+    erb :patron_checkin
+  end
+end

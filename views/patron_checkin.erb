@@ -1,0 +1,17 @@
+<% if @patron.errors.any? %>
+  <% @patron.errors.full_messages.each do |m| %>
+    <p>Error: <%= m %></p>
+  <% end %>
+<% end %>
+
+<h1><%=@patron.name%> Book Return</h1>
+
+<form action='/patron/<%=@patron.id%>/checkin' method="post">
+  Book to Return: <select name="book_id">
+    <% @books.each do |b| %>
+      <option value="<%=b.id%>"><%=b.title%></option>
+    <% end %></br>
+  <input type="submit" value="Return Book">
+</form>
+
+<p><a href='/patron/<%=@patron.id%>'>Back to <%=@patron.name%></a></p>
