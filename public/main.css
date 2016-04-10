@@ -40,6 +40,21 @@ body {
   padding: 0;
 }
 
+.margin-left-15 {
+  margin-left: 15px
+}
+
+.center-div {
+  padding: auto;
+  margin: auto;
+}
+
+hr {
+  border-color: #D3D3D3;
+  border-style: solid none;
+  border-width: 1px 0;
+  margin: 18px 0;
+}
 
 /*------------------------------*\
     Grid System

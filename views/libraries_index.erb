@@ -15,18 +15,27 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+
 <div class="row">
-  <div class="col-md-5 ">
+  <div class="col-md-6 text-center panel panel-default margin-left-15">
     <h1>Libraries Index</h1>
-    <ul>
+    <h5>Select a Library to view details or edit</h5>
+    <ul class="list-unstyled">
       <% @libraries.each do |l| %>
         <li><a href="/library/<%=l.id%>"><%=l.branch_name%></a>
           </br><%=l.address%></br><%=l.phone_number%></li>
       <% end %>
     </ul>
   </div>
-  <div class="col-md-7 ">
-    Create New?
+  <div class="col-md-5 text-center">
+    <h1> </h1>
+    <h4>Opening a new library? Add it here.</h4>
+    <a class="btn btn-default" href="/library/new">Create New Library</a>
+    <div style="padding-top: 160px">
+      <a class="btn btn-default" href="/">Back to Main Menu</a>
+    </div>
   </div>
 </div>
-<p><a class="btn btn-default" href="/libraries">Back to Libraries Menu</a></p>
+<hr>
+<div class="center-div">Library</div>
