@@ -1,8 +1,32 @@
-<h1>Libraries Index</h1>
-<ul>
-  <% @libraries.each do |l| %>
-    <li><a href="/library/<%=l.id%>"><%=l.branch_name%></a>
-      </br><%=l.address%></br><%=l.phone_number%></li>
-  <% end %>
-</ul>
-<p><a href="/libraries">Back to Libraries Menu</a></p>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Library Management System</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href=/libraries>Libraries</a></li>
+        <li><a href="/staff_members">Staff</a></li>
+        <li><a href="/books">Books</a></li>
+        <li><a href="/patrons">Patrons</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="row">
+  <div class="col-md-5 ">
+    <h1>Libraries Index</h1>
+    <ul>
+      <% @libraries.each do |l| %>
+        <li><a href="/library/<%=l.id%>"><%=l.branch_name%></a>
+          </br><%=l.address%></br><%=l.phone_number%></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-7 ">
+    Create New?
+  </div>
+</div>
+<p><a class="btn btn-default" href="/libraries">Back to Libraries Menu</a></p>
