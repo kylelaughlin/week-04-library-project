@@ -280,3 +280,13 @@ get '/patron/:id/checkout' do
   @books = Book.where(patron_id: nil)
   erb :patron_checkout
 end
+
+post '/patron/:id/checkout' do
+  @patron = Patron.find_by_id(params['id'])
+  @book = Book.find_by_id(params['book_id'])
+  if @book.update_attributes(patron: @patron)
+    redirect to("/patron/#{@patron.id}")
+  else
+    erb :patron_checkout
+  end
+end

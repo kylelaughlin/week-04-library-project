@@ -28,8 +28,9 @@
       <p>Books: <%=@patron.books_display%><p>
       <a class="btn btn-default" href="/patron/<%=@patron.id%>/edit">Edit Patron</a>
       <%if @patron.books_display != "None"%>
-      <p><a class="btn btn-default" href="/patron/<%=@patron.id%>/checkin">Return a Book</a></p>
-    <%end%>
+        <p><a class="btn btn-default" href="/patron/<%=@patron.id%>/checkin">Return a Book</a></p>
+      <%end%>
+      <p><a class="btn btn-default" href="/patron/<%=@patron.id%>/checkout">Check Out a Book</a></p>
     </div>
   </div>
 </div>

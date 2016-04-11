@@ -14,6 +14,12 @@
   </div>
 </nav>
 
+<% if @patron.errors.any? %>
+  <% @patron.errors.full_messages.each do |m| %>
+    <p>Error: <%= m %></p>
+  <% end %>
+<% end %>
+
 <h1>Check Out for <%=@patron.name%></h1>
 
 <form role="form" action="/patron/<%=@patron.id%>/checkout" method="post">
@@ -27,7 +33,7 @@
   </div>
   <button type="submit" class="btn btn-default">Check Out Book</button>
 </form>
-<a class="btn btn-default" href="patron/<%=@patron.id%>">Cancel Check Out</a>
+<p><a class="btn btn-default margin-top-10" href="/patron/<%=@patron.id%>">Cancel Check Out</a></p>
 
 <hr>
 <footer class="footer">
