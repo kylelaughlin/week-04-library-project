@@ -1,10 +1,50 @@
-<h1>Patrons Index</h1>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Library Management System</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav">
+        <li><a href=/libraries/index>Libraries</a></li>
+        <li><a href="/staff_members/index">Staff</a></li>
+        <li><a href="/books/index">Books</a></li>
+        <li class="active"><a href="/patrons/index">Patrons</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-<ul>
-  <% @patrons.each do |patron| %>
-    <li>Name: <a href="/patron/<%=patron.id%>"><%=patron.name%></a></br>
-      Email: <%=patron.email%></li>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="col-md-6 text-center panel panel-default margin-left-15">
+    <h1>Patron Index</h1>
+    <h5>Select a patron to view details or edit</h5>
+    <ul class="list-unstyled">
+      <% @patrons.each do |patron| %>
+        <li><a href="/patron/<%=patron.id%>"><%=patron.name%></a>
+        </br>Email: <%=patron.email%></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-5 text-center">
+    <h4 style="padding-top: 70px; padding-bottom: 20px;">Need a new patron? Add them here.</h4>
+    <a class="btn btn-default" href="/patron/new">Create New Patron</a>
+  </div>
+</div>
 
-<p><a href="/patrons">Back to Patrons Menu</a></p>
+<hr>
+<footer class="footer">
+<div class="row fixed-bottom">
+  <div class="col-md-2 col-md-offset-2 text-center">
+    <a href="/libraries/index">Libraries</a>
+  </div>
+  <div class="col-md-2 text-center">
+    <a href="/staff_members/index">Staff Members</a>
+  </div>
+  <div class="col-md-2 text-center">
+    <a href="/books/index">Books</a>
+  </div>
+  <div class="col-md-2 text-center">
+    <a href="/patrons/index">Patrons</a>
+  </div>
+</div>
+</footer>
