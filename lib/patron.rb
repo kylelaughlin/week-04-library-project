@@ -15,7 +15,7 @@ class Patron < ActiveRecord::Base
        string = "None"
      else
        books.each do |b|
-         string += "#{b.title}\n       "
+         string += "#{b.title} | "
        end
      end
      string
