@@ -234,7 +234,7 @@ end
 post '/patrons' do
   @patron = Patron.new(params)
   if @patron.save
-    redirect to("/patrons")
+    redirect to("/patrons/index")
   else
     erb :patron_new
   end
@@ -273,4 +273,10 @@ post '/patron/:id/checkin' do
   else
     erb :patron_checkin
   end
+end
+
+get '/patron/:id/checkout' do
+  @patron = Patron.find_by_id(params['id'])
+  @books = Book.where(patron_id: nil)
+  erb :patron_checkout
 end

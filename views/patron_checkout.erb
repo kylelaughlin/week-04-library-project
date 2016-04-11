@@ -14,26 +14,20 @@
   </div>
 </nav>
 
-<% if @patron.errors.any? %>
-  <% @patron.errors.full_messages.each do |m| %>
-    <p>Error: <%= m %></p>
-  <% end %>
-<% end %>
+<h1>Check Out for <%=@patron.name%></h1>
 
-<h1>Create a Patron</h1>
-
-<form role="form" action="/patrons" method="post">
+<form role="form" action="/patron/<%=@patron.id%>/checkout" method="post">
   <div class="form-group">
-    <label for="name">Name:</label>
-    <input type="text" name="name" class="form-control" id="name" placeholder="Enter new patron's name">
+    <label for="book">Book:</label>
+    <select class="form-control" id="book" name="book_id">
+      <%@books.each do |b| %>
+        <option value="<%=b.id%>"><%=b.title%></option>
+      <% end %>
+    </select>
   </div>
-  <div class="form-group">
-    <label for="email">Email:</label>
-    <input type="text" name="email" class="form-control" id="email" placeholder="Enter new patron's email">
-  </div>
-  <button type="submit" class="btn btn-default">Create New Patron</button>
+  <button type="submit" class="btn btn-default">Check Out Book</button>
 </form>
-<a class="btn btn-default margin-top-10" href="/patrons/index">Cancel Create Patron</a>
+<a class="btn btn-default" href="patron/<%=@patron.id%>">Cancel Check Out</a>
 
 <hr>
 <footer class="footer">
