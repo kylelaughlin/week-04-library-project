@@ -11,6 +11,10 @@ require_relative "lib/staff_member.rb"
 
 #Root
 
+get '/pry' do
+  binding.pry
+end
+
 get '/' do
   erb :root
 end
@@ -46,6 +50,8 @@ end
 #library show
 get '/library/:id' do
   @library = Library.find_by_id(params['id'])
+  @staff_members = StaffMember.where(library_id: params['id'])
+  @books = Book.where(library_id: params['id'])
   erb :library_show
 end
 

@@ -14,13 +14,48 @@
   </div>
 </nav>
 
-<div class="panel panel-default">
-<h1><%=@library.branch_name%></h1>
-
-
-<p>Address: <%=@library.address%></p>
-<p>Phone Number: <%=@library.phone_number%></p>
+<div class="row">
+  <div class="col-md-12 text-center">
+    <div class="panel panel-default padding-10">
+      <h1><%=@library.branch_name%></h1>
+      <p>Address: <%=@library.address%></p>
+      <p>Phone Number: <%=@library.phone_number%></p>
+      <a class="btn btn-default" href="/library/<%=@library.id%>/edit">Edit Library</a>
+    </div>
+  </div>
 </div>
-<p><a href="/library/<%=@library.id%>/edit">Edit Library</a></p>
-<p><a href="/library/<%=@library.id%>/staff_members">See Library Staff</a></p>
-<p><a href="/libraries/index">Back to Library Index</a></p>
+<div class="col-md-6 text-center">
+  <h2>Staff</h2>
+  <ul class="list-unstyled">
+    <% @staff_members.each do |sm| %>
+      <li><a href="/staff_member/<%=sm.id%>"><%=sm.name%></a></br>
+      <%=sm.email%></li>
+    <% end %>
+  </ul>
+</div>
+<div class="col-md-6 text-center">
+  <h2>Books</h2>
+  <ul class="list-unstyled">
+    <% @books.each do |b| %>
+      <li><a href="/book/<%=b.id%>"><%=b.title%></a></br>
+        Author: <%=b.author%></br>ISBN: <%=b.isbn%></li>
+    <%end%>
+  </ul>
+</div>
+<hr>
+<footer class="footer">
+  <div class="row fixed-bottom">
+    <div class="col-md-2 col-md-offset-2 text-center">
+      <a href="/libraries/index">Libraries</a>
+    </div>
+    <div class="col-md-2 text-center">
+      <a href="/staff_members/index">Staff Members</a>
+    </div>
+    <div class="col-md-2 text-center">
+      <a href="/books/index">Books</a>
+    </div>
+    <div class="col-md-2 text-center">
+      <a href="/patrons/index">Patrons</a>
+    </div>
+  </div>
+</footer>
