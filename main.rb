@@ -176,7 +176,7 @@ get '/book/:id/edit' do
   erb :book_edit
 end
 
-post '/book/:id' do
+post '/book/:id/update' do
   @book = Book.find_by_id(params['id'])
   @library = Library.find_by_id(params['library_id'])
   if @book.update_attributes(title: params['title'], author: params['author'],
