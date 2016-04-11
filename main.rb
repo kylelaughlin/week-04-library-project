@@ -41,7 +41,7 @@ end
 post '/libraries' do
   @library = Library.new(params)
   if @library.save
-    redirect to("/libraries")
+    redirect to("/libraries/index")
   else
     erb :library_new
   end
@@ -104,7 +104,7 @@ end
 post '/staff_members' do
   @staff_member = StaffMember.new(params)
   if @staff_member.save
-    redirect to("/staff_members")
+    redirect to("/staff_members/index")
   else
     erb :staff_member_new
   end
