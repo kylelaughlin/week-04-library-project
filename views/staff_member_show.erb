@@ -1,5 +1,44 @@
-<h1><%=@staff_member.name%></h1>
-<p>Email: <%=@staff_member.email%></p>
-<p>Library: <%=@library_name%></p>
-<p><a href="/staff_member/<%=@staff_member.id%>/edit">Edit Staff Member</a></p>
-<p><a href="/staff_members/index">Back to Staff Members Index</a></p>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Library Management System</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav">
+        <li><a href=/libraries/index>Libraries</a></li>
+        <li class="active"><a href="/staff_members/index">Staff</a></li>
+        <li><a href="/books/index">Books</a></li>
+        <li><a href="/patrons/index">Patrons</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="row">
+  <div class="col-md-12 text-center">
+    <div class="panel panel-default padding-10">
+      <h1><%=@staff_member.name%></h1>
+      <p>Email: <%=@staff_member.email%></p>
+      <p>Library: <%=@library_name%></p>
+      <a class="btn btn-default" href="/staff_member/<%=@staff_member.id%>/edit">Edit Staff Member</a>
+    </div>
+  </div>
+</div>
+
+<hr>
+<footer class="footer">
+  <div class="row fixed-bottom">
+    <div class="col-md-2 col-md-offset-2 text-center">
+      <a href="/libraries/index">Libraries</a>
+    </div>
+    <div class="col-md-2 text-center">
+      <a href="/staff_members/index">Staff Members</a>
+    </div>
+    <div class="col-md-2 text-center">
+      <a href="/books/index">Books</a>
+    </div>
+    <div class="col-md-2 text-center">
+      <a href="/patrons/index">Patrons</a>
+    </div>
+  </div>
+</footer>
