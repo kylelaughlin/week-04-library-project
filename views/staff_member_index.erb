@@ -1,7 +1,50 @@
-<h1>Staff Members Index</h1>
-<ul>
-  <% @staff_members.each do |sm| %>
-    <li><a href="/staff_member/<%=sm.id%>"><%=sm.name%></a></li>
-  <% end %>
-</ul>
-<p><a href="/staff_members">Back to Staff Members Menu</a></p>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Library Management System</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav">
+        <li><a href=/libraries/index>Libraries</a></li>
+        <li class="active"><a href="/staff_members/index">Staff</a></li>
+        <li><a href="/books/index">Books</a></li>
+        <li><a href="/patrons/index">Patrons</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="row">
+  <div class="col-md-6 text-center panel panel-default margin-left-15">
+    <h1>Staff Members Index</h1>
+    <h5>Select a staff member to view details or edit</h5>
+    <ul class="list-unstyled">
+      <% @staff_members.each do |sm| %>
+        <li><a href="/staff_member/<%=sm.id%>"><%=sm.name%></a>
+        </br><%=sm.email%></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-5 text-center">
+    <h4 style="padding-top: 70px; padding-bottom: 20px;">Hire a new staff member? Add them here.</h4>
+    <a class="btn btn-default" href="/staff_member/new">Create New Staff Member</a>
+  </div>
+</div>
+
+<hr>
+<footer class="footer">
+<div class="row fixed-bottom">
+  <div class="col-md-2 col-md-offset-2 text-center">
+    <a href="/libraries/index">Libraries</a>
+  </div>
+  <div class="col-md-2 text-center">
+    <a href="/staff_members/index">Staff Members</a>
+  </div>
+  <div class="col-md-2 text-center">
+    <a href="/books/index">Books</a>
+  </div>
+  <div class="col-md-2 text-center">
+    <a href="/patrons/index">Patrons</a>
+  </div>
+</div>
+</footer>
