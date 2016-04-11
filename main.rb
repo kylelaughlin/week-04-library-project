@@ -250,7 +250,7 @@ get '/patron/:id/edit' do
   erb :patron_edit
 end
 
-post '/patron/:id' do
+post '/patron/:id/update' do
   @patron = Patron.find_by_id(params['id'])
   if @patron.update_attributes(name: params['name'], email: params['email'])
     redirect to("/patron/#{@patron.id}")
