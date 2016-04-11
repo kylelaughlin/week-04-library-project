@@ -124,7 +124,7 @@ get '/staff_member/:id/edit' do
   erb :staff_member_edit
 end
 
-post '/staff_member/:id' do
+post '/staff_member/:id/update' do
   @staff_member = StaffMember.find_by_id(params['id'])
   @library = Library.find_by_id(params['library_id'])
   if @staff_member.update_attributes(name: params['name'],email: params['email'], library: @library)
