@@ -1,3 +1,19 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Library Management System</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav">
+        <li><a href=/libraries/index>Libraries</a></li>
+        <li><a href="/staff_members/index">Staff</a></li>
+        <li class="active"><a href="/books/index">Books</a></li>
+        <li><a href="/patrons/index">Patrons</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <% if @book.errors.any? %>
   <% @book.errors.full_messages.each do |m| %>
     <p> Error: <%=m%></p>
@@ -5,16 +21,45 @@
 <%end%>
 
 <h1>Edit <%=@book.title%></h1>
-<form action="/book/<%=@book.id%>" method="post">
-  Title: <input type="text" name="title" value="<%=@book.title%>"></br>
-  Author: <input type="text" name="author" value="<%=@book.author%>"></br>
-  ISBN: <input type="text" name="isbn" value="<%=@book.isbn%>"></br>
-  Library: <select name="library_id">
-            <%@libraries.each do |l|%>
-              <option value="<%=l.id%>" <%= @book.library_id == l.id ? 'selected' : '' %>>
-                <%=l.branch_name%></option>
-            <%end%>
-          </select></br>
-  <input type="submit" value="Update Book">
+
+<form role="form" action="/book/<%=@book.id%>/update" method="post">
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input type="text" name="title" class="form-control" id="title" value="<%=@book.title%>">
+  </div>
+  <div class="form-group">
+    <label for="author">Author:</label>
+    <input type="text" name="author" class="form-control" id="author" value="<%=@book.author%>">
+  </div>
+  <div class="form-group">
+    <label for="isbn">ISBN:</label>
+    <input type="text" name="isbn" class="form-control" id="isbn" value="<%=@book.isbn%>">
+  </div>
+  <div class="form-group">
+    <label for="library">Library:</label>
+    <select class="form-control" id="library" name="library_id">
+      <%@libraries.each do |l| %>
+        <option value="<%=l.id%>" <%= @book.library_id == l.id ? 'selected' : '' %>><%=l.branch_name%></option>
+      <% end %>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-default">Update Book</button>
 </form>
-<p><a href="/book/<%=@book.id%>">Back to <%=@book.title%></a></p>
+
+<hr>
+<footer class="footer">
+  <div class="row fixed-bottom">
+    <div class="col-md-2 col-md-offset-2 text-center">
+      <a href="/libraries/index">Libraries</a>
+    </div>
+    <div class="col-md-2 text-center">
+      <a href="/staff_members/index">Staff Members</a>
+    </div>
+    <div class="col-md-2 text-center">
+      <a href="/books/index">Books</a>
+    </div>
+    <div class="col-md-2 text-center">
+      <a href="/patrons/index">Patrons</a>
+    </div>
+  </div>
+</footer>
