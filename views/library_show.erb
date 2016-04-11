@@ -1,8 +1,26 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Library Management System</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href=/libraries/index>Libraries</a></li>
+        <li><a href="/staff_members/index">Staff</a></li>
+        <li><a href="/books/index">Books</a></li>
+        <li><a href="/patrons/index">Patrons</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="panel panel-default">
 <h1><%=@library.branch_name%></h1>
+
 
 <p>Address: <%=@library.address%></p>
 <p>Phone Number: <%=@library.phone_number%></p>
-
+</div>
 <p><a href="/library/<%=@library.id%>/edit">Edit Library</a></p>
 <p><a href="/library/<%=@library.id%>/staff_members">See Library Staff</a></p>
 <p><a href="/libraries/index">Back to Library Index</a></p>
