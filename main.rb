@@ -139,7 +139,7 @@ end
 get '/books/new' do
   @book = Book.new
   @libraries = Library.all
-  erb :book_new
+  erb :books_new
 end
 
 post '/books' do
@@ -148,20 +148,20 @@ post '/books' do
   if @book.save
     redirect to("/books")
   else
-    erb :book_new
+    erb :books_new
   end
 end
 
 get '/books/:id' do
   @book = Book.find_by_id(params['id'])
   @library = Library.find_by_id(@book.library_id)
-  erb :book_show
+  erb :books_show
 end
 
 get '/books/:id/edit' do
   @book = Book.find_by_id(params['id'])
   @libraries = Library.all
-  erb :book_edit
+  erb :books_edit
 end
 
 post '/books/:id' do
@@ -171,14 +171,14 @@ post '/books/:id' do
                               isbn: params['isbn'], library: @library)
     redirect to ("/books/#{@book.id}")
   else
-    erb :book_edit
+    erb :books_edit
   end
 end
 
 get '/books/:id/checkout' do
   @book = Book.find_by_id(params['id'])
   @patrons = Patron.all
-  erb :book_checkout
+  erb :books_checkout
 end
 
 post '/books/:id/checkout' do
@@ -187,7 +187,7 @@ post '/books/:id/checkout' do
   if @book.update_attributes(patron: @patron)
     redirect to("/books/#{@book.id}")
   else
-    erb :book_checkout
+    erb :books_checkout
   end
 end
 
@@ -196,7 +196,7 @@ get '/books/:id/checkin' do
   if @book.update_attributes(patron_id: nil)
     redirect to("/books/#{@book.id}")
   else
-    erb :book_show
+    erb :books_show
   end
 end
 
