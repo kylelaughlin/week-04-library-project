@@ -5,10 +5,10 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav">
-        <li><a href=/libraries/index>Libraries</a></li>
-        <li class="active"><a href="/staff_members/index">Staff</a></li>
-        <li><a href="/books/index">Books</a></li>
-        <li><a href="/patrons/index">Patrons</a></li>
+        <li><a href="/libraries">Libraries</a></li>
+        <li class="active"><a href="/staff_members">Staff</a></li>
+        <li><a href="/books">Books</a></li>
+        <li><a href="/patrons">Patrons</a></li>
       </ul>
     </div>
   </div>
@@ -20,14 +20,14 @@
     <h5>Select a staff member to view details or edit</h5>
     <ul class="list-unstyled">
       <% @staff_members.each do |sm| %>
-        <li><a href="/staff_member/<%=sm.id%>"><%=sm.name%></a>
+        <li><a href="/staff_members/<%=sm.id%>"><%=sm.name%></a>
         </br><%=sm.email%></li>
       <% end %>
     </ul>
   </div>
   <div class="col-md-5 text-center">
     <h4 style="padding-top: 70px; padding-bottom: 20px;">Hire a new staff member? Add them here.</h4>
-    <a class="btn btn-default" href="/staff_member/new">Create New Staff Member</a>
+    <a class="btn btn-default" href="/staff_members/new">Create New Staff Member</a>
   </div>
 </div>
 
@@ -38,13 +38,13 @@
     <a href="/libraries/index">Libraries</a>
   </div>
   <div class="col-md-2 text-center">
-    <a href="/staff_members/index">Staff Members</a>
+    <a href="/staff_members">Staff Members</a>
   </div>
   <div class="col-md-2 text-center">
-    <a href="/books/index">Books</a>
+    <a href="/books">Books</a>
   </div>
   <div class="col-md-2 text-center">
-    <a href="/patrons/index">Patrons</a>
+    <a href="/patrons">Patrons</a>
   </div>
 </div>
 </footer>

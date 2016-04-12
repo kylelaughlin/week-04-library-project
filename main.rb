@@ -22,18 +22,14 @@ end
 ########################################
 ####### LIBRARY ########################
 ########################################
-#libraries menu
-get '/libraries' do
-  erb :libraries_menu
-end
 
 #libraries index
-get '/libraries/index' do
+get '/libraries' do
   @libraries = Library.all
   erb :libraries_index
 end
 
-get '/library/new' do
+get '/libraries/new' do
   @library = Library.new
   erb :library_new
 end
@@ -41,14 +37,14 @@ end
 post '/libraries' do
   @library = Library.new(params)
   if @library.save
-    redirect to("/libraries/index")
+    redirect to("/libraries")
   else
     erb :library_new
   end
 end
 
 #library show
-get '/library/:id' do
+get '/libraries/:id' do
   @library = Library.find_by_id(params['id'])
   @staff_members = StaffMember.where(library_id: params['id'])
   @books = Book.where(library_id: params['id'])
@@ -56,24 +52,24 @@ get '/library/:id' do
 end
 
 #library edit
-get '/library/:id/edit' do
+get '/libraries/:id/edit' do
   @library = Library.find_by_id(params['id'])
   erb :library_edit
 end
 
-post '/library/:id/update' do
+post '/libraries/:id' do
   binding.pry
   @library = Library.find_by_id(params['id'])
   if @library.update_attributes(branch_name: params['branch_name'],
                                 address: params['address'],
                                 phone_number: params['phone_number'])
-    redirect to ("/library/#{@library.id}")
+    redirect to ("/libraries/#{@library.id}")
   else
     erb :library_edit
   end
 end
 
-get '/library/:id/staff_members' do
+get '/libraries/:id/staff_members' do
   @library = Library.find_by_id(params['id'])
   @staff_members = StaffMember.where(library_id: params['id'])
   erb :library_staff_members
@@ -83,19 +79,14 @@ end
 ####### Staff Member ###################
 ########################################
 
-# staff member menu
-get '/staff_members' do
-  erb :staff_members_menu
-end
-
 #staff member index
-get '/staff_members/index' do
+get '/staff_members' do
   @staff_members = StaffMember.all
   erb :staff_member_index
 end
 
 #staff member new
-get '/staff_member/new' do
+get '/staff_members/new' do
   @staff_member = StaffMember.new
   @libraries = Library.all
   erb :staff_member_new
@@ -103,32 +94,33 @@ end
 
 post '/staff_members' do
   @staff_member = StaffMember.new(params)
+  @libraries = Library.all
   if @staff_member.save
-    redirect to("/staff_members/index")
+    redirect to("/staff_members")
   else
     erb :staff_member_new
   end
 end
 
 # staff member show
-get '/staff_member/:id' do
+get '/staff_members/:id' do
   @staff_member = StaffMember.find_by_id(params['id'])
   @library_name = @staff_member.library.branch_name
   erb :staff_member_show
 end
 
 # staff member edit
-get '/staff_member/:id/edit' do
+get '/staff_members/:id/edit' do
   @staff_member = StaffMember.find_by_id(params['id'])
   @libraries = Library.all
   erb :staff_member_edit
 end
 
-post '/staff_member/:id/update' do
+post '/staff_members/:id' do
   @staff_member = StaffMember.find_by_id(params['id'])
   @library = Library.find_by_id(params['library_id'])
   if @staff_member.update_attributes(name: params['name'],email: params['email'], library: @library)
-    redirect to ("/staff_member/#{@staff_member.id}")
+    redirect to ("/staff_members/#{@staff_member.id}")
   else
     @libraries = Library.all
     erb :staff_member_edit
@@ -139,17 +131,12 @@ end
 ####### Books ##########################
 ########################################
 
-# books menu
 get '/books' do
-  erb :books_menu
-end
-
-get '/books/index' do
   @books = Book.all
   erb :books_index
 end
 
-get '/book/new' do
+get '/books/new' do
   @book = Book.new
   @libraries = Library.all
   erb :book_new
@@ -157,6 +144,7 @@ end
 
 post '/books' do
   @book = Book.new(params)
+  @libraries = Library.all
   if @book.save
     redirect to("/books")
   else
@@ -164,49 +152,49 @@ post '/books' do
   end
 end
 
-get '/book/:id' do
+get '/books/:id' do
   @book = Book.find_by_id(params['id'])
   @library = Library.find_by_id(@book.library_id)
   erb :book_show
 end
 
-get '/book/:id/edit' do
+get '/books/:id/edit' do
   @book = Book.find_by_id(params['id'])
   @libraries = Library.all
   erb :book_edit
 end
 
-post '/book/:id/update' do
+post '/books/:id' do
   @book = Book.find_by_id(params['id'])
   @library = Library.find_by_id(params['library_id'])
   if @book.update_attributes(title: params['title'], author: params['author'],
                               isbn: params['isbn'], library: @library)
-    redirect to ("/book/#{@book.id}")
+    redirect to ("/books/#{@book.id}")
   else
     erb :book_edit
   end
 end
 
-get '/book/:id/checkout' do
+get '/books/:id/checkout' do
   @book = Book.find_by_id(params['id'])
   @patrons = Patron.all
   erb :book_checkout
 end
 
-post '/book/:id/checkout' do
+post '/books/:id/checkout' do
   @book = Book.find_by_id(params['id'])
   @patron = Patron.find_by_id(params['patron_id'])
   if @book.update_attributes(patron: @patron)
-    redirect to("/book/#{@book.id}")
+    redirect to("/books/#{@book.id}")
   else
     erb :book_checkout
   end
 end
 
-get '/book/:id/checkin' do
+get '/books/:id/checkin' do
   @book = Book.find_by_id(params['id'])
   if @book.update_attributes(patron_id: nil)
-    redirect to("/book/#{@book.id}")
+    redirect to("/books/#{@book.id}")
   else
     erb :book_show
   end
@@ -216,17 +204,12 @@ end
 ####### Patron #########################
 ########################################
 
-# patrons menu
 get '/patrons' do
-  erb :patrons_menu
-end
-
-get '/patrons/index' do
   @patrons = Patron.all
   erb :patrons_index
 end
 
-get '/patron/new' do
+get '/patrons/new' do
   @patron = Patron.new
   erb :patron_new
 end
@@ -234,58 +217,59 @@ end
 post '/patrons' do
   @patron = Patron.new(params)
   if @patron.save
-    redirect to("/patrons/index")
+    redirect to("/patrons")
   else
     erb :patron_new
   end
 end
 
-get '/patron/:id' do
+get '/patrons/:id' do
   @patron = Patron.find_by_id(params['id'])
   erb :patron_show
 end
 
-get '/patron/:id/edit' do
+get '/patrons/:id/edit' do
   @patron = Patron.find_by_id(params['id'])
   erb :patron_edit
 end
 
-post '/patron/:id/update' do
+post '/patrons/:id' do
   @patron = Patron.find_by_id(params['id'])
   if @patron.update_attributes(name: params['name'], email: params['email'])
-    redirect to("/patron/#{@patron.id}")
+    redirect to("/patrons/#{@patron.id}")
   else
     erb :patron_edit
   end
 end
 
-get '/patron/:id/checkin' do
+get '/patrons/:id/checkin' do
   @patron = Patron.find_by_id(params['id'])
   @books = Book.where(patron_id: @patron.id)
   erb :patron_checkin
 end
 
-post '/patron/:id/checkin' do
+post '/patrons/:id/checkin' do
   @patron = Patron.find_by_id(params['id'])
   @book = Book.find_by_id(params['book_id'])
   if @book.update_attributes(patron_id: nil)
-    redirect to("/patron/#{@patron.id}")
+    redirect to("/patrons/#{@patron.id}")
   else
     erb :patron_checkin
   end
 end
 
-get '/patron/:id/checkout' do
+get '/patrons/:id/checkout' do
   @patron = Patron.find_by_id(params['id'])
   @books = Book.where(patron_id: nil)
   erb :patron_checkout
 end
 
-post '/patron/:id/checkout' do
+post '/patrons/:id/checkout' do
   @patron = Patron.find_by_id(params['id'])
   @book = Book.find_by_id(params['book_id'])
-  if @book.update_attributes(patron: @patron)
-    redirect to("/patron/#{@patron.id}")
+
+  if @book.update_attributes(patron_id)
+    redirect to("/patrons/#{@patron.id}")
   else
     erb :patron_checkout
   end

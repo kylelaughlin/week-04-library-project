@@ -5,10 +5,10 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav">
-        <li><a href=/libraries/index>Libraries</a></li>
-        <li><a href="/staff_members/index">Staff</a></li>
-        <li class="active"><a href="/books/index">Books</a></li>
-        <li><a href="/patrons/index">Patrons</a></li>
+        <li><a href="/libraries">Libraries</a></li>
+        <li><a href="/staff_members">Staff</a></li>
+        <li class="active"><a href="/books">Books</a></li>
+        <li><a href="/patrons">Patrons</a></li>
       </ul>
     </div>
   </div>
@@ -22,7 +22,7 @@
 
 <h1>Edit <%=@book.title%></h1>
 
-<form role="form" action="/book/<%=@book.id%>/update" method="post">
+<form role="form" action="/books/<%=@book.id%>" method="post">
   <div class="form-group">
     <label for="title">Title:</label>
     <input type="text" name="title" class="form-control" id="title" value="<%=@book.title%>">
@@ -50,16 +50,16 @@
 <footer class="footer">
   <div class="row fixed-bottom">
     <div class="col-md-2 col-md-offset-2 text-center">
-      <a href="/libraries/index">Libraries</a>
+      <a href="/libraries">Libraries</a>
     </div>
     <div class="col-md-2 text-center">
-      <a href="/staff_members/index">Staff Members</a>
+      <a href="/staff_members">Staff Members</a>
     </div>
     <div class="col-md-2 text-center">
-      <a href="/books/index">Books</a>
+      <a href="/books">Books</a>
     </div>
     <div class="col-md-2 text-center">
-      <a href="/patrons/index">Patrons</a>
+      <a href="/patrons">Patrons</a>
     </div>
   </div>
 </footer>

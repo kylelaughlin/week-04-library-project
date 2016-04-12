@@ -5,10 +5,10 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav">
-        <li><a href=/libraries/index>Libraries</a></li>
-        <li><a href="/staff_members/index">Staff</a></li>
-        <li class="active"><a href="/books/index">Books</a></li>
-        <li><a href="/patrons/index">Patrons</a></li>
+        <li><a href="/libraries">Libraries</a></li>
+        <li><a href="/staff_members">Staff</a></li>
+        <li class="active"><a href="/books">Books</a></li>
+        <li><a href="/patrons">Patrons</a></li>
       </ul>
     </div>
   </div>
@@ -28,8 +28,8 @@
       <p>ISBN: <%=@book.isbn%></p>
       <p>Library: <%=@book.library.branch_name%></p>
       <p>Status: <%=@book.patron_id.nil? ? "Available" : "Checked out by #{@book.patron.name}"%><p>
-      <a class="btn btn-default" href="/book/<%=@book.id%>/edit">Edit Book</a>
-      <a class="btn btn-default" href="/book/<%=@book.id%>/<%=@book.patron_id.nil? ? 'checkout' : 'checkin'%>">
+      <a class="btn btn-default" href="/books/<%=@book.id%>/edit">Edit Book</a>
+      <a class="btn btn-default" href="/books/<%=@book.id%>/<%=@book.patron_id.nil? ? 'checkout' : 'checkin'%>">
         <%=@book.patron_id.nil? ? "Check Out Book" : "Check In Book"%></a>
     </div>
   </div>
@@ -38,16 +38,16 @@
 <footer class="footer">
   <div class="row fixed-bottom">
     <div class="col-md-2 col-md-offset-2 text-center">
-      <a href="/libraries/index">Libraries</a>
+      <a href="/libraries">Libraries</a>
     </div>
     <div class="col-md-2 text-center">
-      <a href="/staff_members/index">Staff Members</a>
+      <a href="/staff_members">Staff Members</a>
     </div>
     <div class="col-md-2 text-center">
-      <a href="/books/index">Books</a>
+      <a href="/books">Books</a>
     </div>
     <div class="col-md-2 text-center">
-      <a href="/patrons/index">Patrons</a>
+      <a href="/patrons">Patrons</a>
     </div>
   </div>
 </footer>

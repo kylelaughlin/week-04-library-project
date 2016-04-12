@@ -5,10 +5,10 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav">
-        <li><a href=/libraries/index>Libraries</a></li>
-        <li><a href="/staff_members/index">Staff</a></li>
-        <li class="active"><a href="/books/index">Books</a></li>
-        <li><a href="/patrons/index">Patrons</a></li>
+        <li><a href="/libraries">Libraries</a></li>
+        <li><a href="/staff_members">Staff</a></li>
+        <li class="active"><a href="/books">Books</a></li>
+        <li><a href="/patrons">Patrons</a></li>
       </ul>
     </div>
   </div>
@@ -20,14 +20,14 @@
     <h5>Select a book to view details or edit</h5>
     <ul class="list-unstyled">
       <% @books.each do |b| %>
-        <li><a href="/book/<%=b.id%>"><%=b.title%></a>
+        <li><a href="/books/<%=b.id%>"><%=b.title%></a>
         </br>Author: <%=b.author%></br> ISBN: <%=b.isbn%></li>
       <% end %>
     </ul>
   </div>
   <div class="col-md-5 text-center">
     <h4 style="padding-top: 70px; padding-bottom: 20px;">Aquire a new book? Add it here.</h4>
-    <a class="btn btn-default" href="/book/new">Create New Book</a>
+    <a class="btn btn-default" href="/books/new">Create New Book</a>
   </div>
 </div>
 
@@ -35,16 +35,16 @@
 <footer class="footer">
 <div class="row fixed-bottom">
   <div class="col-md-2 col-md-offset-2 text-center">
-    <a href="/libraries/index">Libraries</a>
+    <a href="/libraries">Libraries</a>
   </div>
   <div class="col-md-2 text-center">
-    <a href="/staff_members/index">Staff Members</a>
+    <a href="/staff_members">Staff Members</a>
   </div>
   <div class="col-md-2 text-center">
-    <a href="/books/index">Books</a>
+    <a href="/books">Books</a>
   </div>
   <div class="col-md-2 text-center">
-    <a href="/patrons/index">Patrons</a>
+    <a href="/patrons">Patrons</a>
   </div>
 </div>
 </footer>

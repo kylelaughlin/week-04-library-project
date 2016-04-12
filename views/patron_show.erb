@@ -5,10 +5,10 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav">
-        <li><a href=/libraries/index>Libraries</a></li>
-        <li><a href="/staff_members/index">Staff</a></li>
-        <li><a href="/books/index">Books</a></li>
-        <li class="active"><a href="/patrons/index">Patrons</a></li>
+        <li><a href="/libraries">Libraries</a></li>
+        <li><a href="/staff_members">Staff</a></li>
+        <li><a href="/books">Books</a></li>
+        <li class="active"><a href="/patrons">Patrons</a></li>
       </ul>
     </div>
   </div>
@@ -26,11 +26,29 @@
       <h1><%=@patron.name%></h1>
       <p>Email: <%=@patron.email%></p>
       <p>Books: <%=@patron.books_display%><p>
-      <a class="btn btn-default" href="/patron/<%=@patron.id%>/edit">Edit Patron</a>
+      <a class="btn btn-default" href="/patrons/<%=@patron.id%>/edit">Edit Patron</a>
       <%if @patron.books_display != "None"%>
-        <p><a class="btn btn-default" href="/patron/<%=@patron.id%>/checkin">Return a Book</a></p>
+        <p><a class="btn btn-default" href="/patrons/<%=@patron.id%>/checkin">Return a Book</a></p>
       <%end%>
-      <p><a class="btn btn-default" href="/patron/<%=@patron.id%>/checkout">Check Out a Book</a></p>
+      <p><a class="btn btn-default" href="/patrons/<%=@patron.id%>/checkout">Check Out a Book</a></p>
     </div>
   </div>
 </div>
+
+<hr>
+<footer class="footer">
+<div class="row fixed-bottom">
+  <div class="col-md-2 col-md-offset-2 text-center">
+    <a href="/libraries">Libraries</a>
+  </div>
+  <div class="col-md-2 text-center">
+    <a href="/staff_members">Staff Members</a>
+  </div>
+  <div class="col-md-2 text-center">
+    <a href="/books">Books</a>
+  </div>
+  <div class="col-md-2 text-center">
+    <a href="/patrons">Patrons</a>
+  </div>
+</div>
+</footer>
