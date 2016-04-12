@@ -5,7 +5,8 @@ require "sinatra/reloader"
 
 Dir[File.dirname(__FILE__) + '/app/controllers/*.rb'].each {|file| require file }
 Dir[File.dirname(__FILE__) + '/app/models/*.rb'].each {|file| require file}
-#Root
+
+set :views, Proc.new { File.join(root, "app/views")}
 
 get '/pry' do
   binding.pry
